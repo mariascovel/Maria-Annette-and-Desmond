@@ -61,7 +61,11 @@ public class Magpie5
 		{
 			response = transformIWantStatement(statement);
 		}
-
+		else if (findKeyword(statement, "I hate to", 0) >= 0) {
+			response = transformIHateToStatement(statement);		
+		}
+		else if(findKeyword(statement, "I hate",0) >= 0)
+			response = transformIHateStatement(statement);
 		else
 		{
 
@@ -139,7 +143,42 @@ public class Magpie5
 		String restOfStatement = statement.substring(psn + 6).trim();
 		return "Would you really be happy if you had " + restOfStatement + "?";
 	}
-	
+	/**
+	 * @param statement the user statement, assumed to contain "I hate ...."
+	 * @return the transformed statement "What's so bad about .."
+	 */
+	private String transformIHateStatement(String statement) {
+		//  Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals(".") || lastChar.equals("?"))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "I hate", 0);
+		String restOfStatement = statement.substring(psn + 6).trim();
+		return "What's so bad about " + restOfStatement + "?";
+	}
+	/**
+	 * @param statement the user statement, assumed to contain "I hate to ...."
+	 * @return the transformed statement "What would you like to do instead of ....."
+	 */
+	private String transformIHateToStatement(String statement) {
+		//  Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals(".") || lastChar.equals("!"))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "I hate to", 0);
+		String restOfStatement = statement.substring(psn + 9).trim();
+		return "What would you like to do instead of " + restOfStatement + "?";
+	}
 	/**
 	 * Take a statement with "you <something> me" and transform it into 
 	 * "What makes you think that I <something> you?"

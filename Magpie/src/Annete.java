@@ -6,14 +6,6 @@
  * 12-10-16
  */
 public class Annete {
-	/**
-	 * Get a default greeting 	
-	 * @return a greeting
-	 */
-	public String getGreeting()
-	{
-		return "Hello, let's talk. My name is Annete";
-	}
 	
 	/**
 	 * Gives a response to a user statement
@@ -26,80 +18,31 @@ public class Annete {
 	{
 		statement = statement.trim();
 		String response = " ";
-				
-		if (statement.length() == 0) 
-			response = "Please, say something.";
+		response = GetInspirationalQuote(statement);
 		
-		else if (findKeyword(statement,"no") >= 0
-				|| findKeyword(statement,"not")>= 0)
-		{
-			response = "Why so negative?";
-		}
-		else if (findKeyword(statement, "I hate to", 0) >= 0) {
-			response = transformIHateToStatement(statement);		
-		}
-		else if(findKeyword(statement, "I hate",0) >= 0)
-			response = transformIHateStatement(statement);
-		else
-		{
-			response = GetInspirationalQuote(statement);
-		}
+		if(response.length() == 0)
+			response = getRandomInspirationResponse();
+				
 		return response;
 	}
 
-	/**
-	 * @param statement the user statement, assumed to contain "I hate ...."
-	 * @return the transformed statement "What's so bad about .."
-	 */
-	private String transformIHateStatement(String statement) {
-		//  Remove the final period, if there is one
-		statement = statement.trim();
-		String lastChar = statement.substring(statement
-				.length() - 1);
-		if (lastChar.equals(".") || lastChar.equals("?"))
-		{
-			statement = statement.substring(0, statement
-					.length() - 1);
-		}
-		int psn = findKeyword (statement, "I hate", 0);
-		String restOfStatement = statement.substring(psn + 6).trim();
-		return "What's so bad about " + restOfStatement + "?";
-	}
-	/**
-	 * @param statement the user statement, assumed to contain "I hate to ...."
-	 * @return the transformed statement "What would you like to do instead of ....."
-	 */
-	private String transformIHateToStatement(String statement) {
-		//  Remove the final period, if there is one
-		statement = statement.trim();
-		String lastChar = statement.substring(statement
-				.length() - 1);
-		if (lastChar.equals(".") || lastChar.equals("!"))
-		{
-			statement = statement.substring(0, statement
-					.length() - 1);
-		}
-		int psn = findKeyword (statement, "I hate to", 0);
-		String restOfStatement = statement.substring(psn + 9).trim();
-		return "What would you like to do instead of " + restOfStatement + "?";
-	}
 
 	/**
 	 * Return appropriate inspirational statement from an Array of statements based on the keywords
 	 * @param statement is the user statement, assumed to contain keywords
 	 * @return the inspiration statement or random statement if doesn't contain keywords
 	 */
-	private String GetInspirationalQuote(String statement) {
-		
+	private String GetInspirationalQuote(String statement)
+	{
 		statement = statement.trim();
 				
 		for(int i=0; i < findingKeyWords.length; i++)
 		{
-			if(findKeyword (statement, findingKeyWords[i], 0) >= 0)
+			if(findKeyword (statement, findingKeyWords[i]) >= 0)
 				return inspirationalResponses[i];			
 		}
 		
-		return getRandomInspirationResponse();
+		return "";
 	}
 
 	/**
@@ -108,7 +51,7 @@ public class Annete {
 	 */
 	private String getRandomInspirationResponse()
 	{
-		final int NUMBER_OF_RESPONSES = 6;
+		final int NUMBER_OF_RESPONSES = randomResponses.length;
 		double r = Math.random();
 		int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
 				
