@@ -55,7 +55,7 @@ public class Annete {
 		double r = Math.random();
 		int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
 				
-		return randomResponses[whichResponse];
+		return "I don't quite understand, but I hope this quote can lighten your mood: "+randomResponses[whichResponse];
 	}
 	private int findKeyword(String statement, String goal) {
 		return findKeyword(statement,goal,0);
@@ -93,6 +93,7 @@ public class Annete {
 
 		return -1;
 	}
+	// these responses are for when it can't match it to an inspirational quote but knows it belongs to this class. last scenario responses
 	private String[] randomResponses = {
 			"Happiness is not something you postpone for the future; it is something you design for the present.",
 			"It is during our darkest moments that we must focus to see the light.",
@@ -101,7 +102,7 @@ public class Annete {
 			"Perfection is not attainable, but if we chase perfection we can catch excellence.",
 			"In order to carry a positive action we must develop here a positive vision.",
 			"We must let go of the life we have planned, so as to accept the one that is waiting for us."
-	};
+	 re};
 	private String[] findingKeyWords = {
 			"school",
 			"sick",
