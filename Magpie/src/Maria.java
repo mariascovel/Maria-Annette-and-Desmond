@@ -91,7 +91,7 @@ public class Maria {
 	private String [] randomQuestion = {
 			"'Tell me more.'",
 			"'Can you expand?'",
-			"''"
+			"'Is this reoccuring?'"
 	};
 }
 
