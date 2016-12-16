@@ -88,5 +88,10 @@ public class Maria {
 			"'Beauty is when you can appreciate yourself. When you love yourself, that's when you're most beautiful.' Zoe Kravitz",
 			"'Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful'"
 	};
+	private String [] randomQuestion = {
+			"'Tell me more.'",
+			"'Can you expand?'",
+			"''"
+	};
 }
 

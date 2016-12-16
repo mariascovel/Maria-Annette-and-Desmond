@@ -55,7 +55,7 @@ public class Annete {
 		double r = Math.random();
 		int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
 				
-		return "I don't quite understand, but I hope this quote can lighten your mood: "+randomResponses[whichResponse];
+		return "I can't think of a quote related to your situation, but I hope this quote can lighten your mood: "+randomResponses[whichResponse];
 	}
 	private int findKeyword(String statement, String goal) {
 		return findKeyword(statement,goal,0);
@@ -102,7 +102,7 @@ public class Annete {
 			"Perfection is not attainable, but if we chase perfection we can catch excellence.",
 			"In order to carry a positive action we must develop here a positive vision.",
 			"We must let go of the life we have planned, so as to accept the one that is waiting for us."
-	 re};
+	 };
 	private String[] findingKeyWords = {
 			"school",
 			"sick",
