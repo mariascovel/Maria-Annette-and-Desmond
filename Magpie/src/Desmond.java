@@ -12,20 +12,6 @@ public class Desmond
 	private int avgWordLength;
 	
 	
-	public static void main(String[] args) throws IOException
-	{
-		readFiles();
-		/*positive();
-		negative();
-		Scanner input = new Scanner(System.in);
-		String statement = input.nextLine();
-		input.close();
-		polarizeResponse(statement);
-		analyze(statement);
-		*/
-	
-	}
-	
 	public Desmond (String statement)
 	{
 		
@@ -110,12 +96,6 @@ public class Desmond
 		}
 		
 		avgWordLength = sentenceLength / wordCount;
-		if (wordCount > 0)
-		{
-			System.out.println("Word count: " + wordCount);
-			System.out.println("Sentence length: " + sentenceLength);
-			System.out.println("Average word length: " + avgWordLength);
-		}
 	}
 	
 	public static int positive(String statement)
