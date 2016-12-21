@@ -146,7 +146,7 @@ public class Desmond
 	
 	public static void positiveFile() throws IOException
 	{
-		Scanner x = new Scanner(new File("positives.txt"));
+		Scanner x = new Scanner(new File("positiveWords.txt"));
 		String entireFileText = x.useDelimiter("\\Z").next();
 		x.close();
 		
@@ -220,7 +220,7 @@ public class Desmond
 		
 		
 		/*
-		FileWriter fw = new FileWriter("C:\\Users\\daska\\Desktop\\positives.txt");
+		FileWriter fw = new FileWriter("C:\\Users\\daska\\Desktop\\positiveWords.txt");
 		PrintWriter output= new PrintWriter(fw);
 		
 		for(int v = 0, posLength = posArray.length; v < posLength ; v++)
