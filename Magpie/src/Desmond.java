@@ -6,18 +6,36 @@ public class Desmond
 	private static String posArray [];
 	private static String negArray[];
 	
+	
 	private int sentenceCount;
 	private int wordCount;
-	private int sentenceLength;
+	private int letterCount;
 	private int avgWordLength;
 	
-	
-	public Desmond (String statement)
+	//Analyzes the user's input and provides an appropriate response
+	public  String getResponse(String statement)
 	{
-		
-		
+		String response ="";
+		analyze(statement);
+		int sentiment = polarizeResponse(statement);
+		if(sentiment > 0)
+		{
+			Maria happy = new Maria();
+			response = happy.getResponse(statement);
+		}
+		else if (sentiment < 0)
+		{
+			Annete sad = new Annete();
+			response = sad.getResponse(statement);
+		}
+		else
+		{
+			response = getRandomResponse();
+		}
+		return response;	
 	}
 	
+	//Figures out if the statement has an overall positive, negative, or neutral sentiment.
 	public static int polarizeResponse(String statement)
 	{
 		
@@ -27,6 +45,7 @@ public class Desmond
 		
 	}
 	
+	//Analyzes the user's input; can detect multiple sentences and punctuation
 	public void analyze(String statement)
 	{
 		int beginPosition = 0;
@@ -39,7 +58,7 @@ public class Desmond
 			{
 				sentenceCount++;
 				String sentence = statement.substring(beginPosition, endPosition+1);
-				System.out.println(sentence);
+				analyzeSentence(sentence);
 				beginPosition = endPosition+1;
 			}
 		
@@ -47,7 +66,7 @@ public class Desmond
 			{
 				sentenceCount++;
 				String sentence = statement.substring(beginPosition, endPosition+1);
-				System.out.println(sentence);
+				analyzeSentence(sentence);
 				beginPosition = endPosition+1;
 			}
 		
@@ -55,7 +74,7 @@ public class Desmond
 			{
 				sentenceCount++;
 				String sentence = statement.substring(beginPosition, endPosition+1);
-				System.out.println(sentence);
+				analyzeSentence(sentence);
 				beginPosition = endPosition+1;
 			}
 			endPosition++;
@@ -65,10 +84,14 @@ public class Desmond
 		{
 			sentenceCount++;
 			String sentence = statement.substring(beginPosition, statement.length());
-			System.out.println(sentence);
+			analyzeSentence(sentence);
 		}
 		
+		avgWordLength =  letterCount / wordCount;
+		
 	}
+	
+	//Analyze the statistics of a sentence
 	public void analyzeSentence(String statement)
 	{
 		int beginPosition = 0;
@@ -81,7 +104,7 @@ public class Desmond
 			{
 				wordCount++;
 				String word = statement.substring(beginPosition, endPosition);
-				sentenceLength += word.length();
+				letterCount += word.length();
 			}
 				
 			beginPosition = endPosition + 1;
@@ -92,12 +115,12 @@ public class Desmond
 		{
 		   wordCount++;
 		   String word = statement.substring(beginPosition, statement.length());
-		   sentenceLength += word.length();
+		   letterCount += word.length();
 		}
 		
-		avgWordLength = sentenceLength / wordCount;
 	}
 	
+	//Analyzes the amount of positive words in a statement
 	public static int positive(String statement)
 	{
 		int positive = 0;
@@ -121,6 +144,7 @@ public class Desmond
 		return positive;	
 	}
 	
+	//Analyzes the amount of negative words in a statement
 	public static int negative(String statement)
 	{
 		int negative = 0;
@@ -144,6 +168,7 @@ public class Desmond
 		return negative;	
 	}
 	
+	//Create the posArray from the positiveWords file
 	public static void positiveFile() throws IOException
 	{
 		Scanner x = new Scanner(new File("positiveWords.txt"));
@@ -161,11 +186,12 @@ public class Desmond
 			posWord = strTkn.nextToken();
 			array [y] = posWord;
 			y++;
-			System.out.print(posWord+" ");
 		}
 		quickSort(array);
 		posArray= removeDuplicates(array);
 	}
+	
+	//Create the negArray from the negativeWords file
 	public static void negativeFile() throws IOException
 	{
 		Scanner x = new Scanner(new File("negativeWords.txt"));
@@ -183,19 +209,20 @@ public class Desmond
 			negWord = strTkn.nextToken();
 			array [y] = negWord;
 			y++;
-			System.out.print(negWord+" ");
 		}
 		quickSort(array);
 		negArray= removeDuplicates(array);
 	}
 	
+	//read the positiveWords and negativeWords file
 	public static void readFiles() throws IOException
 	{
 		positiveFile();
 		negativeFile();		
 	}
 	
-	public static void readFiles(String filePath, String [] fileArray) throws IOException
+	//Reads a file and returns an array containing the words in the file
+	public String[] readFiles(String filePath, String [] fileArray) throws IOException
 	{
 		Scanner x = new Scanner(new File(filePath));
 		String entireFileText = x.useDelimiter("\\Z").next();
@@ -212,11 +239,10 @@ public class Desmond
 			word = strTkn.nextToken();
 			array [y] = word;
 			y++;
-			System.out.print(word+" ");
 		}
 		quickSort(array);
 		fileArray= removeDuplicates(array);
-		printArray(fileArray);
+		return fileArray;
 		
 		
 		/*
@@ -230,30 +256,26 @@ public class Desmond
 		output.close();
 		fw.close();
 		*/
-		
-		
 			
 	}
 	
-	public static void response(String statement)
+	//Provides a random response
+	private String getRandomResponse ()
 	{
-			
+		Random r = new Random ();
+		return randomResponses [r.nextInt(randomResponses.length)];
 	}
 	
-	public static void statement(String statement)
-	{
-			
-	}
+	private String [] randomResponses = {"Interesting, tell me more",
+			"Hmmm.",
+			"Do you really think so?",
+			"You don't say.",
+			"Gee wilikers",
+			"Is it getting hot in here?",
+			"So, would you like to go for a walk?",
+			"Could you say that again?"
+	};
 	
-	public static void exclamtion(String statement)
-	{
-			
-	}
-	
-	public static void question(String statement)
-	{
-		
-	}
 	public static String[] removeDuplicates(String[] list) //This method takes an input array and returns a new array without duplicates.
 	{
 		String newList [] = new String [list.length];
@@ -356,5 +378,19 @@ public class Desmond
 		System.out.println();
 	}
 
+	public static void statement(String statement)
+	{
+			
+	}
+	
+	public static void exclamtion(String statement)
+	{
+			
+	}
+	
+	public static void question(String statement)
+	{
+		
+	}
 
 }
