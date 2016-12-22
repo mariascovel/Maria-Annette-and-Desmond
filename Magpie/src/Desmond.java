@@ -21,7 +21,7 @@ public class Desmond
 		if(sentiment > 0)
 		{
 			Maria happy = new Maria();
-			response = happy.getResponse(statement);
+			response = happy.getResponse();
 		}
 		else if (sentiment < 0)
 		{
@@ -124,7 +124,7 @@ public class Desmond
 	public static int positive(String statement)
 	{
 		int positive = 0;
-		StringTokenizer strTkn = new StringTokenizer(statement, " -.,\n\r\t\b\f–!?:;");	
+		StringTokenizer strTkn = new StringTokenizer(statement, " -.,\n\r\t\b\fï¿½!?:;");	
 		int length = strTkn.countTokens();
 
 		while(strTkn.hasMoreTokens())
@@ -148,7 +148,7 @@ public class Desmond
 	public static int negative(String statement)
 	{
 		int negative = 0;
-		StringTokenizer strTkn = new StringTokenizer(statement, " -.,\n\r\t\b\f–!?:;");	
+		StringTokenizer strTkn = new StringTokenizer(statement, " -.,\n\r\t\b\fï¿½!?:;");	
 		int length = strTkn.countTokens();
 
 		while(strTkn.hasMoreTokens())
@@ -175,7 +175,7 @@ public class Desmond
 		String entireFileText = x.useDelimiter("\\Z").next();
 		x.close();
 		
-		StringTokenizer strTkn = new StringTokenizer(entireFileText, " -.,\n\r\t\b\f–");
+		StringTokenizer strTkn = new StringTokenizer(entireFileText, " -.,\n\r\t\b\fï¿½");
 		int length = strTkn.countTokens();
 		String array [] = new String[length];
 		int y=0;
@@ -198,7 +198,7 @@ public class Desmond
 		String entireFileText = x.useDelimiter("\\Z").next();
 		x.close();
 		
-		StringTokenizer strTkn = new StringTokenizer(entireFileText, " -.,\n\r\t\b\f–");
+		StringTokenizer strTkn = new StringTokenizer(entireFileText, " -.,\n\r\t\b\fï¿½");
 		int length = strTkn.countTokens();
 		String array [] = new String[length];
 		int y=0;
@@ -228,7 +228,7 @@ public class Desmond
 		String entireFileText = x.useDelimiter("\\Z").next();
 		x.close();
 		
-		StringTokenizer strTkn = new StringTokenizer(entireFileText, " -.,\n\r\t\b\f–");
+		StringTokenizer strTkn = new StringTokenizer(entireFileText, " -.,\n\r\t\b\fï¿½");
 		int length = strTkn.countTokens();
 		String array [] = new String[length];
 		int y=0;

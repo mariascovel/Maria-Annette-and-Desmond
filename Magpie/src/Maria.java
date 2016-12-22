@@ -1,41 +1,30 @@
 
-public class Maria {
-	/**
-	 * Gives a response to a user statement
-	 * 
-	 * @param statement
-	 *            the user statement
-	 * @return a response based on the rules given
-	 */
-	public String getResponse(String statement)
+public class Maria 
+{
+	String stringReturned;
+	public Maria ()
 	{
-		statement = statement.trim();
-		String response = " ";
-		response = GetInspirationalQuote(statement);
-				
-		return response;
+		stringReturned = null;
 	}
-
-
-	/**
-	 * Return appropriate inspirational statement from an Array of statements based on the keywords
-	 * @param statement is the user statement, assumed to contain keywords
-	 * @return the inspiration statement or random statement if doesn't contain keywords
-	 */
-	private String GetInspirationalQuote(String statement)
+	public void stringSetter (String statement)
 	{
 		statement = statement.trim();
-				
+		
 		for(int i=0; i < findingKeyWords.length; i++)
 		{
 			if(findKeyword (statement, findingKeyWords[i]) >= 0)
-				return inspirationalResponses[i];			
+				stringReturned=inspirationalResponses[i];
+			else
+			{ 
+				final int NUMBER_OF_RESPONSES = randomQuestion.length;
+				double r = Math.random();
+				int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
+				stringReturned = randomQuestion[whichResponse];
+			}
 		}
-		
-		return "";
 	}
-	private int findKeyword(String statement, String goal) {
-		return findKeyword(statement,goal,0);
+	private int findKeyword (String statement, String goal) {
+		return findKeyword (statement,goal,0);
 	}
 	private int findKeyword(String statement, String goal, int startPos) {
 		
@@ -93,5 +82,9 @@ public class Maria {
 			"'Can you expand?'",
 			"'Is this reoccuring?'"
 	};
+	public String getResponse()
+	{
+		return stringReturned;
+	}
 }
 
