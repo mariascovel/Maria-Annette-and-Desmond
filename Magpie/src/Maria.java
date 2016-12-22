@@ -2,10 +2,7 @@
 public class Maria 
 {
 	String stringReturned;
-	public Maria ()
-	{
-		stringReturned = null;
-	}
+
 	public void stringSetter (String statement)
 	{
 		statement = statement.trim();
@@ -69,21 +66,22 @@ public class Maria
 			"success"
 	};
 	private String[] inspirationalResponses = {
-			"'A little party never hurt anybody'",
-			"'I like to go out if there's a party or go to the movies, but I just like hanging out with my buddies and having a good time. Jean-Luc Bilodeau'",
-			"'It’s often just enough to be with someone. I don’t need to touch them. Not even talk. A feeling passes between you both. You’re not alone.' Marilyn Monroe",
-			"'Money makes the world go around.",
-			"'The greatest gifts you can give your children are the roots of responsibility and the wings of independence.' Denis Waitley",
-			"'Beauty is when you can appreciate yourself. When you love yourself, that's when you're most beautiful.' Zoe Kravitz",
-			"'Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful'"
+			"A little party never hurt anybody",
+			"I like to go out if there's a party or go to the movies, but I just like hanging out with my buddies and having a good time. Jean-Luc Bilodeau",
+			"It's often just enough to be with someone. I don't need to touch them. Not even talk. A feeling passes between you both. You're not alone.' Marilyn Monroe",
+			"Money makes the world go around.",
+			"The greatest gifts you can give your children are the roots of responsibility and the wings of independence. Denis Waitley",
+			"Beauty is when you can appreciate yourself. When you love yourself, that's when you're most beautiful. Zoe Kravitz",
+			"Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful."
 	};
 	private String [] randomQuestion = {
-			"'Tell me more.'",
-			"'Can you expand?'",
-			"'Is this reoccuring?'"
+			"Tell me more.",
+			"Can you expand?",
+			"Is this reoccuring?"
 	};
-	public String getResponse()
+	public String getResponse(String statement)
 	{
+		stringSetter(statement);
 		return stringReturned;
 	}
 }

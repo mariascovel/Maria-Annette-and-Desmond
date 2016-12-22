@@ -21,7 +21,7 @@ public class Desmond
 		if(sentiment > 0)
 		{
 			Maria happy = new Maria();
-			response = happy.getResponse();
+			response = happy.getResponse(statement);
 		}
 		else if (sentiment < 0)
 		{
