@@ -1,27 +1,51 @@
 
 public class Maria 
 {
-	String stringReturned;
-
-	public void stringSetter (String statement)
+	public String getResponse(String statement)
 	{
 		statement = statement.trim();
+		String response = " ";
+		response = GetInspirationalQuote(statement);
 		
+		if(response.length() == 0)
+			response = getRandomInspirationResponse();
+				
+		return response;
+	}
+
+
+	/**
+	 * Return appropriate inspirational statement from an Array of statements based on the keywords
+	 * @param statement is the user statement, assumed to contain keywords
+	 * @return the inspiration statement or random statement if doesn't contain keywords
+	 */
+	private String GetInspirationalQuote(String statement)
+	{
+		statement = statement.trim();
+				
 		for(int i=0; i < findingKeyWords.length; i++)
 		{
 			if(findKeyword (statement, findingKeyWords[i]) >= 0)
-				stringReturned=inspirationalResponses[i];
-			else
-			{ 
-				final int NUMBER_OF_RESPONSES = randomQuestion.length;
-				double r = Math.random();
-				int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
-				stringReturned = randomQuestion[whichResponse];
-			}
+				return inspirationalResponses[i];			
 		}
+		
+		return "";
 	}
-	private int findKeyword (String statement, String goal) {
-		return findKeyword (statement,goal,0);
+
+	/**
+	 * Pick a default response to use if nothing else fits.
+	 * @return a non-committal string
+	 */
+	private String getRandomInspirationResponse()
+	{
+		final int NUMBER_OF_RESPONSES = randomQuestion.length;
+		double r = Math.random();
+		int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
+				
+		return randomQuestion[whichResponse];
+	}
+	private int findKeyword(String statement, String goal) {
+		return findKeyword(statement,goal,0);
 	}
 	private int findKeyword(String statement, String goal, int startPos) {
 		
@@ -79,10 +103,5 @@ public class Maria
 			"Can you expand?",
 			"Is this reoccuring?"
 	};
-	public String getResponse(String statement)
-	{
-		stringSetter(statement);
-		return stringReturned;
-	}
 }
 
