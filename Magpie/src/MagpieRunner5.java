@@ -21,13 +21,13 @@ public class MagpieRunner5
 		System.out.println ("What's your name?");
 		Scanner in = new Scanner (System.in);
 		String statement = in.nextLine();
-		magpie.setName(statement);
-		System.out.println ("What do you like to do?");
+		Desmond.setName(statement);
+		System.out.println ("Hi, " + statement + "!\nHow are feeling today?");
 		
 		while (!statement.equals("Bye"))
 		{
-			System.out.println (magpie.getResponse(statement));
 			statement = in.nextLine();
+			System.out.println (magpie.getResponse(statement));
 		}
 	}
 

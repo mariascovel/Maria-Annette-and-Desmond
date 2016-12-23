@@ -5,8 +5,8 @@ public class Desmond
 {
 	private static String posArray [];
 	private static String negArray[];
+	
 	private static String name ="";
-
 	private int sentenceCount;
 	private int wordCount;
 	private int letterCount;
@@ -268,20 +268,31 @@ public class Desmond
 	//Provides a random response
 	private String getRandomResponse ()
 	{
+		 String [] randomResponses = {"Interesting, tell me more",
+					"Hmmm.",
+					"Do you really think so?",
+					"You don't say.",
+					"Gee wilikers",
+					name +", I'd like to know more",
+					"So, "+name+", could you elaborate?",
+					"Could you say that again?",
+					"OK! WoW! So, "+name+", is that really true?",
+					name+", I need you to get more personal.",
+					"How do you feel about that, " + name +"?",
+					"Are you sure about that, " + name +"?",
+					"That's lit.",
+					"Really?",
+					"Same!",
+					"Wow, I'm done!",
+					"Uh-huh",
+					"Come on! really?, " + name + ", we're totally fam now.",
+					name + ", How does that make you feel?",
+					"Yo, that's crazy",
+					name+ ", How does that impact your emotions?"};
 		Random r = new Random ();
 		return randomResponses [r.nextInt(randomResponses.length)];
 	}
 	
-	private String [] randomResponses = {"Interesting, tell me more",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"Gee wilikers",
-			"I'd like to know about you.\nWhere would you like go to have a ?",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
-			
-	};
 	
 	public static String[] removeDuplicates(String[] list) //This method takes an input array and returns a new array without duplicates.
 	{
