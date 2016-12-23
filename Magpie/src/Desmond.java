@@ -93,7 +93,7 @@ public class Desmond
 			analyzeSentence(sentence);
 		}
 		
-		avgWordLength =  letterCount / wordCount;
+		//avgWordLength =  letterCount / wordCount;
 		
 	}
 	
