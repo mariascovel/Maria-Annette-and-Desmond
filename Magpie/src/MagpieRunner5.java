@@ -18,8 +18,11 @@ public class MagpieRunner5
 		Desmond magpie = new Desmond();
 		Desmond.readFiles();
 		System.out.println ("Hello, let's talk!");
+		System.out.println ("What's your name?");
 		Scanner in = new Scanner (System.in);
 		String statement = in.nextLine();
+		magpie.setName(statement);
+		System.out.println ("What do you like to do?");
 		
 		while (!statement.equals("Bye"))
 		{

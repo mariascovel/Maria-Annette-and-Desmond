@@ -5,12 +5,18 @@ public class Desmond
 {
 	private static String posArray [];
 	private static String negArray[];
-	
-	
+	private static String name ="";
+
 	private int sentenceCount;
 	private int wordCount;
 	private int letterCount;
 	private int avgWordLength;
+	
+	
+	public static void setName(String newName)
+	{
+		name = newName;
+	}
 	
 	//Analyzes the user's input and provides an appropriate response
 	public  String getResponse(String statement)
@@ -271,9 +277,10 @@ public class Desmond
 			"Do you really think so?",
 			"You don't say.",
 			"Gee wilikers",
-			"Is it getting hot in here?",
+			"I'd like to know about you.\nWhere would you like go to have a ?",
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
+			
 	};
 	
 	public static String[] removeDuplicates(String[] list) //This method takes an input array and returns a new array without duplicates.
@@ -378,19 +385,6 @@ public class Desmond
 		System.out.println();
 	}
 
-	public static void statement(String statement)
-	{
-			
-	}
-	
-	public static void exclamtion(String statement)
-	{
-			
-	}
-	
-	public static void question(String statement)
-	{
-		
-	}
+
 
 }
