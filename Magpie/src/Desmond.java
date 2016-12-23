@@ -251,7 +251,7 @@ public class Desmond
 		return fileArray;
 		
 		
-		/*
+		/* Writes the array into a new/different file
 		FileWriter fw = new FileWriter("C:\\Users\\daska\\Desktop\\positiveWords.txt");
 		PrintWriter output= new PrintWriter(fw);
 		

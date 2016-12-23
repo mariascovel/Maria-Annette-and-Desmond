@@ -22,7 +22,7 @@ public class MagpieRunner5
 		Scanner in = new Scanner (System.in);
 		String statement = in.nextLine();
 		Desmond.setName(statement);
-		System.out.println ("Hi, " + statement + "!\nHow are feeling today?");
+		System.out.println ("Hi, " + statement + "!\nHow are you feeling today?");
 		
 		while (!statement.equals("Bye"))
 		{
